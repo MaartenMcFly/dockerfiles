@@ -10,7 +10,9 @@ ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION 6.0
 
 # Do basic updates
-RUN apt-get update -q && apt-get clean && apt-get install curl bzip2 python g++ build-essential -y
+RUN apt-get update -q && \
+    apt-get clean && \
+    apt-get install curl bzip2 python g++ build-essential -y
 
 # Install node
 # https://github.com/creationix/nvm#install-script

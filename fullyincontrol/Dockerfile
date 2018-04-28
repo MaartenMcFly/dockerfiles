@@ -1,17 +1,20 @@
 FROM fluxable/nodeandmeteor:latest
 
+MAINTAINER Maarten Smeets, m_mcfly@hotmail.com
+
+# Both should be passed a --build-arg. Use cat of ssh key files.
 ARG ssh_prv_key
 ARG ssh_pub_key
-
-MAINTAINER Maarten Smeets, m_mcfly@hotmail.com
 
 # Create mountpoint and temp dir
 RUN mkdir /fic && mkdir /tmp/fic
 
 # Do basic updates
-RUN apt-get update -q && apt-get clean && apt-get install curl git ssh bzip2 python g++ build-essential -y
+RUN apt-get update -q && \
+    apt-get clean && \
+    apt-get install curl git ssh bzip2 python g++ build-essential -y
 
-# Make interactive by switching off SttictHostKeyChecking. Is this a security risk?
+# Make interactive by switching off StrictHostKeyChecking. Is this a security risk?
 RUN mkdir -p /root/.ssh && \
     chmod 0700 /root/.ssh && \
     echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
@@ -48,4 +51,4 @@ RUN cd /tmp/fic/src && \
 EXPOSE 80
 ENV PORT 80
 
-# cCMD ["forever", "--minUptime", "1000", "--spinSleepTime", "1000", "fic/build/bundle/main.js"]
+# cCMD ["forever", "--minUptime", "1000", "--spinSleepTime", "1000", "/fic/main.js"]
