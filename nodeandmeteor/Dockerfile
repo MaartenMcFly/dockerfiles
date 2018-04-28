@@ -7,7 +7,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # nvm environment variables
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 6.0
+ENV NODE_VERSION 8.8.1
 
 # Do basic updates
 RUN apt-get update -q && \
