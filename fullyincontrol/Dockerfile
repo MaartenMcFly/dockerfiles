@@ -40,23 +40,6 @@ RUN cd /home/fic/src && \
     cd /home/fic/build/bundle/programs/server && \
     npm install
 
-  # Install the version of Node.js we need.
-  # && cd /home/fic/fic/build/bundle \
-  # && bash -c 'curl "https://nodejs.org/dist/$(<.node_version.txt)/node-$(<.node_version.txt)-linux-x64.tar.gz" > /home/fic/fic/build/required-node-linux-x64.tar.gz' \
-  # && cd /usr/local && tar --strip-components 1 -xzf /home/fic/fic/build/required-node-linux-x64.tar.gz \
-  # && rm /home/fic/fic/build/required-node-linux-x64.tar.gz \
-
-  # Build the NPM packages needed for build
-  # && cd /home/fic/fic/build/bundle/programs/server \
-  # && npm install \
-
-  # Get rid of Meteor. We're done with it.
-  #&& rm /usr/local/bin/meteor \
-  #&& rm -rf ~/.meteor \
-
-  #no longer need curl
-  #&& apt-get --purge autoremove curl -y
-
 # RUN npm install -g forever
 
 EXPOSE 80
