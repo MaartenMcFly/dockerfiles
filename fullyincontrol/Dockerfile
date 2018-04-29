@@ -1,4 +1,4 @@
-FROM fluxable/nodeandmeteor:latest
+FROM dockermcfly/nodeandmeteor:latest
 
 MAINTAINER Maarten Smeets, m_mcfly@hotmail.com
 
@@ -47,9 +47,7 @@ RUN cd /tmp/fic/src && \
     cp -R /tmp/fic/build/bundle/* /fic && \
     rm -rf /tmp/fic
 
-# RUN npm install -g forever
-
 EXPOSE 80
 ENV PORT 80
 
-# cCMD ["forever", "--minUptime", "1000", "--spinSleepTime", "1000", "/fic/main.js"]
+CMD ["node", "/fic/main.js"]

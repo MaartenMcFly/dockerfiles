@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM bitnami/minideb:jessie
 
 MAINTAINER Maarten Smeets, m_mcfly@hotmail.com
 
@@ -8,6 +8,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 # nvm environment variables
 ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION 8.8.1
+ENV PATH $PATH:$NVM_DIR/versions/node/v$NODE_VERSION/bin
 
 # Do basic updates
 RUN apt-get update -q && \
