@@ -3,6 +3,7 @@ FROM fluxable/nodeandmeteor:latest
 MAINTAINER Maarten Smeets, m_mcfly@hotmail.com
 
 # Both should be passed a --build-arg. Use cat of ssh key files.
+ARG repository
 ARG ssh_prv_key
 ARG ssh_pub_key
 
@@ -26,7 +27,7 @@ RUN echo "$ssh_prv_key" > /root/.ssh/id_rsa && \
     chmod 600 /root/.ssh/id_rsa.pub
 
 # Clone repository
-RUN git clone --branch "master" --depth 50 git@bitbucket.org:fwalraven123/fic.kosmos.git /tmp/fic/src
+RUN git clone --branch "master" --depth 50 $repository /tmp/fic/src
 
 # Remove ssh files
 RUN rm -rf /root/.ssh
